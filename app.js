@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_SERVICE_NAME+"://"+process.env.MONGODB_USER+":"+ process.env.MONGODB_PASSWORD+"@localhost" +":27017/"+process.env.MONGODB_DATABASE);
+mongoose.connect("mongodb"+"://"+process.env.MONGODB_USER+":"+ process.env.MONGODB_PASSWORD+"@localhost" +":27017/"+process.env.MONGODB_DATABASE);
 //mongoose.connect("mongodb://localhost:27017/node-demo");
 var nameSchema = new mongoose.Schema({
     firstName: String,
