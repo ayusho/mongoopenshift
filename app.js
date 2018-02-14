@@ -37,9 +37,11 @@ var mongoURL = 'mongodb://';
 var mongoUser = process.env.MONGODB_USER || 'admin';
 var mongoPassword = process.env.MONGODB_PASSWORD || 'admin';
 var mongoDatabase = process.env.MONGODB_DATABASE || 'sampledb';
+var mongoHost = process.env.MONGODB_SERVICE_HOST || 'localhost';
+var mongoPort = process.env.MONGODB_SERVICE_PORT || '27017';
 
 mongoURL += mongoUser + ':' + mongoPassword + '@';
-mongoURL +=  'localhost:27017/' + mongoDatabase;
+mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
 
 
 console.log('mongoURL-->' + mongoURL);
