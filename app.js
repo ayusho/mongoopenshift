@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-
+// var port = 3000;
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -36,9 +36,9 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
 
 
-
+console.log('mongoURL-->' + mongoURL);
 mongoose.connect(mongoURL);
-//mongoose.connect("mongodb://localhost:27017/node-demo");
+// mongoose.connect("mongodb://localhost:27017/node-demo");
 var nameSchema = new mongoose.Schema({
     firstName: String,
     lastName: String
@@ -50,6 +50,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/addname", (req, res) => {
+    console.log(req.body);
     var myData = new User(req.body);
     myData.save()
         .then(item => {
