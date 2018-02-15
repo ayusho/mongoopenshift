@@ -37,7 +37,7 @@ var mongoURL = 'mongodb://';
 var mongoUser = process.env.MONGODB_USER || 'sopra';
 var mongoPassword = process.env.MONGODB_PASSWORD || 'sopra';
 var mongoDatabase = process.env.MONGODB_DATABASE || 'sampledb';
-var mongoHost = process.env.MONGODB_SERVICE_HOST || '172.16.17.187';
+var mongoHost = process.env.MONGODB_SERVICE_HOST || 'localhost';
 var mongoPort = process.env.MONGODB_SERVICE_PORT || '27017';
 
 mongoURL += mongoUser + ':' + mongoPassword + '@';
@@ -54,7 +54,8 @@ var nameSchema = new mongoose.Schema({
 var User = mongoose.model("User", nameSchema);
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.send('hello world');
+    // res.sendFile(__dirname + "/index.html");
 });
 
 app.post("/addname", (req, res) => {
