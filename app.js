@@ -8,36 +8,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 var port = 3000;
-
-// var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-//     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-//     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-//     mongoURLLabel = "";
-
-// if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-//   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-//       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-//       mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-//       mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
-//       mongoPassword = process.env[mongoServiceName + '_PASSWORD']
-//       mongoUser = process.env[mongoServiceName + '_USER'];
-
-//   if (mongoHost && mongoPort && mongoDatabase) {
-//     mongoURLLabel = mongoURL = 'mongodb://';
-//     if (mongoUser && mongoPassword) {
-//       mongoURL += mongoUser + ':' + mongoPassword + '@';
-//     }
-//     // Provide UI label that excludes user id and pw
-//     mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-//     mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
-
-//   }
-// }
+//MONGODB_SERVICE_HOST:172.30.155.155
 var mongoURL = 'mongodb://';
 var mongoUser = process.env.MONGODB_USER || 'admin';
 var mongoPassword = process.env.MONGODB_PASSWORD || 'admin';
 var mongoDatabase = process.env.MONGODB_DATABASE || 'sampledb';
-var mongoHost = process.env.MONGODB_SERVICE_HOST || '172.16.17.188';
+var mongoHost = process.env.MONGODB_SERVICE_HOST || 'MONGODB_SERVICE_HOST';
 var mongoPort = process.env.MONGODB_SERVICE_PORT || '27017';
 
 mongoURL += mongoUser + ':' + mongoPassword + '@';
@@ -56,8 +32,8 @@ var User = mongoose.model("User", nameSchema);
 app.get("/", (req, res) => {
     console.log(process.env.DATABASE_USER);
     console.log(process.env.MONGODB_USER);
-    res.send('hello world');
-    // res.sendFile(__dirname + "/index.html");
+    //res.send('hello world');
+     res.sendFile(__dirname + "/index.html");
 });
 
 app.post("/addname", (req, res) => {
