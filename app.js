@@ -34,10 +34,10 @@ var port = 3000;
 //   }
 // }
 var mongoURL = 'mongodb://';
-var mongoUser = process.env.MONGODB_USER || 'sopra';
-var mongoPassword = process.env.MONGODB_PASSWORD || 'sopra';
+var mongoUser = process.env.MONGODB_USER || 'admin';
+var mongoPassword = process.env.MONGODB_PASSWORD || 'admin';
 var mongoDatabase = process.env.MONGODB_DATABASE || 'sampledb';
-var mongoHost = process.env.MONGODB_SERVICE_HOST || '172.16.17.187';
+var mongoHost = process.env.MONGODB_SERVICE_HOST || '172.16.17.188';
 var mongoPort = process.env.MONGODB_SERVICE_PORT || '27017';
 
 mongoURL += mongoUser + ':' + mongoPassword + '@';
@@ -73,5 +73,7 @@ app.post("/addname", (req, res) => {
 });
 
 app.listen(port, () => {
+    console.log(process.env.DATABASE_USER);
+    console.log(process.env.MONGODB_USER);
     console.log("Server listening on port " + port);
 });
