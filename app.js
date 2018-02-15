@@ -54,6 +54,8 @@ var nameSchema = new mongoose.Schema({
 var User = mongoose.model("User", nameSchema);
 
 app.get("/", (req, res) => {
+    console.log(process.env.DATABASE_USER);
+    console.log(process.env.MONGODB_USER);
     res.send('hello world');
     // res.sendFile(__dirname + "/index.html");
 });
