@@ -34,11 +34,11 @@ var port = 3000;
 //   }
 // }
 var mongoURL = 'mongodb://';
-var mongoUser = process.env.MONGODB_USER;
-var mongoPassword = process.env.MONGODB_PASSWORD;
-var mongoDatabase = process.env.MONGODB_DATABASE;
-var mongoHost = process.env.MONGODB_SERVICE_HOST;
-var mongoPort = process.env.MONGODB_SERVICE_PORT;
+var mongoUser = process.env.MONGODB_USER || 'sopra';
+var mongoPassword = process.env.MONGODB_PASSWORD || 'sopra';
+var mongoDatabase = process.env.MONGODB_DATABASE || 'sampledb';
+var mongoHost = process.env.MONGODB_SERVICE_HOST || '172.16.17.187';
+var mongoPort = process.env.MONGODB_SERVICE_PORT || '27017';
 
 mongoURL += mongoUser + ':' + mongoPassword + '@';
 mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
